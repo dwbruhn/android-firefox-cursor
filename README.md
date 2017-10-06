@@ -16,7 +16,7 @@ Or just open `index.html` in your browser. Type numbers in the input field to se
 
 ## Summary
 
-Upon firing of an `keypress` event, the reported cursor position is wrong in a particiular situation.
+Upon firing of an `keypress` event, the reported cursor position is wrong in a particular situation.
 
 ## More info
 
@@ -45,12 +45,15 @@ After setting `event.target.value` to any string and thereby causing the cursor 
 **OS**: macOS Sierra 10.12.6
 **Browser**: Firefox Developer Edition, 57.0b5 (64-bit)
 
-Note that '7', which is typed after '6', gets inserted **at the end** of the string as expected:
+Notice that '7', which is typed after '6', gets inserted **at the end** of the string as expected:
+
+![desktop-firefox](./desktop-firefox.gif)
 
 ### Buggy
 
 **OS**: Android 7.1.2 (Nexus 5X)
 **Browser**: Firefox beta, 57.0b5
 
-Note that '7', which is typed after '6', gets inserted after the '6' in the character sequence, instead of at the end:
+Notice that '7', which is typed after '6', gets inserted **after the '6'** in the character sequence, instead of at the end:
 
+![android-firefox](./android-firefox.gif)
