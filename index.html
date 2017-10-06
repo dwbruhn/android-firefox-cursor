@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <title>Cursor Bug</title>
+    <script>
+        var _previousCursorPos = 0;
+
+        function onKeyPress(event) {
+            event.preventDefault(); // handle the input change ourselves
+
+            var cursorPos = event.target.selectionStart; // save the cursor position reported upon firing of onKeyPress
+
+            // if key is 4, insert *'s instead
+            // if key is 6, insert 6 surrounded by characters
+            var newChars;
+            switch (event.key) {
+                case '4':
+                    newChars = '*****'; // characters without '4' in them. but if you add 4 inside the characters, the bug will show up
+                    break;
+                case '6':
+                    newChars = '...6#######'; // characters with '6' in them. this exposes the bug
+                    break;
+                default:
+                    newChars = event.key;
+            }
+
+            // insert the new character(s) to the existing value AT THE NEW CURSOR POSITION
+            var curValue = event.target.value;
+            event.target.value = curValue.slice(0, cursorPos) + newChars + curValue.slice(cursorPos);
+
+            // LOG stuff
+
+            var reportArea = document.getElementById('reportArea');
+            reportArea.innerHTML = 'The previous cursor position was: ' + _previousCursorPos + '\n';
+            reportArea.innerHTML += 'At onkeypress, the cursor position was: ' + cursorPos + '\n';
+            reportArea.innerHTML += (cursorPos === _previousCursorPos) ? '' : 'MISMATCH!\n'
+            reportArea.innerHTML += 'You pressed: "' + event.key + '"\n';
+            reportArea.innerHTML += 'We inserted "' + newChars + '" at cursor position: ' + cursorPos + '\n\n';
+            reportArea.innerHTML += 'The new cursor position is: ' + event.target.selectionStart;
+
+            _previousCursorPos = event.target.selectionStart; // save the new cursor position for comparison
+        }
+    </script>
+
+</head>
+
+<body>
+    <noscript>
+        You need to enable JavaScript to run this app.
+    </noscript>
+    <h2>Cursor Bug (Android Firefox)</h2>
+    <div>
+        <label>
+            Type some numbers. and watch the box for cursor position mismatches.
+            <br/>
+            <input id="myInput" type="tel" size="45" value="" onkeypress="onKeyPress(event)" />
+        </label>
+        <br /><br />
+        <textarea id="reportArea" rows="7" cols="50">Information will appear here</textarea>
+        <ul>
+            <li>Only onkeypress events are caught.</li>
+            <li>When you press '4', we insert '*****' instead.</li>
+            <li>When you press '6', we insert '...6#######' instead.</li>
+            <li>After you press '6' and we insert that whole string, the cursor is at the end of the input.
+                But at the beginning of the next keypress event, the cursor moves back to immediately after the '6'!
+                <ul>
+                    <li>This doesn't happen when the string inserted does NOT contain the number itself (e.g., when 4 is overridden
+                        by *****).</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+</body>
+<script>
+        console.log('Initialized.');
+        var myInput = document.getElementById('myInput');
+        myInput.value = ''; // clear input on page reload
+</script>
+
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "android-firefox-cursor",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "serve ."
+  },
+  "author": "Daniel Bruhn <dwbruhn@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "serve": "^6.2.0"
+  }
+}
