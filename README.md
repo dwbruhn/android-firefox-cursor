@@ -4,15 +4,11 @@ This code demonstrates a potential cursor behavior bug that only manifests on **
 
 **Versions**: Android Firefox 56.0 and 57.0b5
 
+##### [Live Demo](https://dwbruhn.github.io/android-firefox-cursor/)
+
 ## To run
 
-```bash
-npm install
-npm start # this runs 'serve .'
-# access it at http://localhost:5000
-```
-
-Or just open `index.html` in your browser. Type numbers in the input field to see the behavior.
+Open `index.html` or visit the [live demo](https://dwbruhn.github.io/android-firefox-cursor/) in your browser. Type numbers in the input field to see the behavior.
 
 ## Summary
 
