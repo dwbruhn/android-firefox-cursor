@@ -2,9 +2,24 @@
 
 This code demonstrates a potential cursor behavior bug that only manifests on **Android Firefox** (not in Android Chrome, nor in desktop versions of Firefox).
 
-**Versions**: Android Firefox 56.0 and 57.0b5
+## Live Demo
 
 ##### [Live Demo](https://dwbruhn.github.io/android-firefox-cursor/)
+
+## Version Info
+
+*Tested on Android Nexus 5X*
+
+#### Expected Behavior:
+
+* 51.0: http://ftp.mozilla.org/pub/mobile/releases/51.0/android-api-15/en-US/
+
+#### Buggy Behavior:
+
+* 52.0: http://ftp.mozilla.org/pub/mobile/releases/52.0/android-api-15/en-US/
+* 52.0.2: http://ftp.mozilla.org/pub/mobile/releases/52.0.2/android-api-15/en-US/
+* 56.0 (installed via Google Play Store)
+* 57.0b5 (Firefox Beta, installed via Google Play Store)
 
 ## To run
 
