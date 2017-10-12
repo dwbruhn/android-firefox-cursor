@@ -1,6 +1,6 @@
 # Android Firefox Cursor (Bug?)
 
-This code demonstrates a potential cursor behavior bug that only manifests on **Android Firefox** (not in Android Chrome, nor in desktop versions of Firefox).
+This code demonstrates a potential cursor behavior bug that only manifests on **Android Firefox 52.0+** (not in Android Chrome, nor in desktop versions of Firefox).
 
 ## Live Demo
 
@@ -13,6 +13,7 @@ This code demonstrates a potential cursor behavior bug that only manifests on **
 #### Expected Behavior:
 
 * 51.0: http://ftp.mozilla.org/pub/mobile/releases/51.0/android-api-15/en-US/
+  * Note: [BrowserStack](http://browserstack.com) is currently using this version of Firefox on their Android devices
 
 #### Buggy Behavior:
 
